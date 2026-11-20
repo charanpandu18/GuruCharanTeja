@@ -1,0 +1,412 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Guru Charan Teja Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout: sticky HUD nav, then stacked full-width sections on a faint red grid; featured project gets the largest panel. */
+:root {
+  --bg: #07070a;
+  --surface: #0f0e13;
+  --surface-2: #15131a;
+  --line: #2a1a1f;
+  --red: #ff2a3d;
+  --red-deep: #b3101f;
+  --fg: #efedf0;
+  --muted: #a3a1ad;
+  --font-display: "Orbitron", "Segoe UI", sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  padding-block: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,42,61,.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,42,61,.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 60; background: var(--bg);
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+.wrap {
+  width: 100%; max-width: 1120px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* nav */
+header.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  background: rgba(7,7,10,.88); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 60px; }
+.brand { font-family: var(--font-mono); font-weight: 700; font-size: 14px; text-decoration: none; letter-spacing: .04em; white-space: nowrap; }
+.brand b { color: var(--red); }
+.links { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.links::-webkit-scrollbar { display: none; }
+.links a {
+  font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em;
+  text-decoration: none; color: var(--muted); padding: 8px 10px; white-space: nowrap; transition: color .2s;
+}
+.links a:hover { color: var(--red); }
+
+/* shared */
+section { padding-block: 88px; border-bottom: 1px solid var(--line); }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--red); margin: 0 0 12px; }
+.eyebrow::before { content: "> "; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 700; letter-spacing: .01em; margin-bottom: 40px; }
+.panel {
+  position: relative; background: var(--surface); border: 1px solid var(--line); padding: 28px; min-width: 0;
+  transition: border-color .25s, box-shadow .25s;
+}
+.panel::before, .panel::after { content: ""; position: absolute; width: 14px; height: 14px; border: 2px solid var(--red); }
+.panel::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.panel::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+.panel:hover { border-color: var(--red-deep); box-shadow: 0 0 32px rgba(255,42,61,.12); }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-weight: 700; font-size: 13px;
+  letter-spacing: .08em; text-transform: uppercase; text-decoration: none; padding: 14px 22px; border: 1px solid var(--red);
+  transition: background .2s, color .2s, box-shadow .2s; cursor: pointer; background: transparent; color: var(--fg);
+}
+.btn.solid { background: var(--red); color: #0a0204; }
+.btn.solid:hover { box-shadow: 0 0 28px rgba(255,42,61,.55); }
+.btn:hover { background: var(--red); color: #0a0204; }
+.chip {
+  font-family: var(--font-mono); font-size: 12px; padding: 5px 11px; border: 1px solid var(--line); color: var(--fg);
+  background: var(--surface-2); white-space: nowrap;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* hero */
+.hero { padding-block: 72px 80px; }
+.hero .grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; }
+.hero .status { font-family: var(--font-mono); font-size: 12px; color: var(--muted); display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+.dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; box-shadow: 0 0 10px var(--red); animation: pulse 2s infinite; }
+@keyframes pulse { 50% { opacity: .35; } }
+.hero h1 { font-size: clamp(34px, 6.2vw, 64px); font-weight: 900; letter-spacing: .01em; }
+.hero h1 span { color: var(--red); text-shadow: 0 0 28px rgba(255,42,61,.45); }
+.role { font-family: var(--font-mono); font-size: clamp(14px, 2vw, 18px); color: var(--red); margin: 18px 0 14px; }
+.cursor { display: inline-block; width: 9px; height: 1.05em; background: var(--red); vertical-align: -3px; margin-left: 4px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.tagline { color: var(--muted); max-width: 52ch; font-size: 17px; margin: 0 0 32px; }
+.cta { display: flex; flex-wrap: wrap; gap: 14px; }
+.term { font-family: var(--font-mono); font-size: 13px; padding: 0; }
+.term .bar { display: flex; align-items: center; gap: 7px; padding: 12px 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+.term .bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); display: block; }
+.term .bar i:first-child { background: var(--red); }
+.term .bar span { margin-left: 8px; }
+.term pre { margin: 0; padding: 20px; white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.85; }
+.term .k { color: var(--red); } .term .m { color: var(--muted); }
+
+/* about */
+.about { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; }
+.about p { margin: 0 0 16px; color: #d6d4da; max-width: 62ch; }
+.facts { display: grid; gap: 0; }
+.facts div { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.facts div:last-child { border-bottom: 0; }
+.facts dt { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.facts dd { margin: 0; text-align: right; }
+
+/* skills */
+.skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.skill-grid h3 { font-size: 15px; letter-spacing: .08em; margin-bottom: 18px; color: var(--fg); }
+.skill-grid h3 em { font-style: normal; color: var(--red); font-family: var(--font-mono); font-size: 12px; margin-right: 8px; }
+.meter { margin-bottom: 14px; }
+.meter:last-child { margin-bottom: 0; }
+.meter div { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 12px; margin-bottom: 6px; }
+.meter span { color: var(--muted); }
+
+/* featured project */
+.feature { border-color: var(--red-deep); box-shadow: 0 0 0 1px rgba(255,42,61,.12), 0 0 60px rgba(255,42,61,.08); padding: clamp(24px, 4vw, 44px); }
+.badge { display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; background: var(--red); color: #0a0204; padding: 4px 10px; font-weight: 700; margin-bottom: 18px; }
+.feature h3 { font-size: clamp(24px, 4vw, 40px); font-weight: 900; margin-bottom: 16px; }
+.feature .lead { color: #d6d4da; max-width: 68ch; margin: 0 0 32px; font-size: 17px; }
+.flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-bottom: 32px; }
+.flow li { list-style: none; position: relative; padding: 18px 16px; border: 1px solid var(--line); background: var(--bg); min-width: 0; margin-left: -1px; }
+.flow li:first-child { margin-left: 0; }
+.flow small { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--red); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px; }
+.flow strong { font-family: var(--font-display); font-size: 14px; font-weight: 700; display: block; margin-bottom: 4px; }
+.flow span { font-size: 13px; color: var(--muted); line-height: 1.5; display: block; }
+.flow li.hot { border-color: var(--red); box-shadow: inset 0 0 24px rgba(255,42,61,.14); }
+.flow { padding: 0; margin-inline: 0; }
+.detail { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+.detail h4 { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin: 0 0 12px; font-weight: 500; }
+.detail ul { margin: 0; padding-left: 18px; color: #d6d4da; }
+.detail li { margin-bottom: 8px; }
+.detail li::marker { color: var(--red); }
+
+/* other projects */
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.cards h3 { font-size: 20px; margin-bottom: 12px; }
+.cards p { color: var(--muted); margin: 0 0 20px; }
+.tag { font-family: var(--font-mono); font-size: 11px; color: var(--red); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 14px; display: block; }
+
+/* education */
+.timeline { position: relative; padding-left: 32px; max-width: 720px; }
+.timeline::before { content: ""; position: absolute; left: 6px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(var(--red), var(--line)); }
+.tl { position: relative; }
+.tl::before { content: ""; position: absolute; left: -33px; top: 7px; width: 12px; height: 12px; background: var(--bg); border: 2px solid var(--red); box-shadow: 0 0 12px var(--red); transform: rotate(45deg); }
+.tl h3 { font-size: 20px; margin-bottom: 6px; }
+.tl .meta { font-family: var(--font-mono); font-size: 13px; color: var(--red); margin-bottom: 10px; display: block; }
+.tl p { margin: 0; color: var(--muted); }
+
+/* contact */
+.contact { text-align: center; max-width: 720px; margin-inline: auto; }
+.contact h2 { margin-bottom: 16px; }
+.contact > p { color: var(--muted); margin: 0 auto 32px; max-width: 52ch; }
+.mail { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: stretch; margin-bottom: 20px; }
+.mail code { font-family: var(--font-mono); font-size: clamp(13px, 3.6vw, 16px); padding: 14px 18px; border: 1px solid var(--line); background: var(--surface); overflow-wrap: anywhere; user-select: all; min-width: 0; }
+.contact .cta { justify-content: center; }
+footer { padding-block: 32px; font-family: var(--font-mono); font-size: 12px; color: var(--muted); text-align: center; }
+footer b { color: var(--red); font-weight: 500; }
+
+@media (max-width: 860px) {
+  section { padding-block: 64px; }
+  .hero .grid, .about, .detail { grid-template-columns: 1fr; gap: 32px; }
+  .skill-grid { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: 1fr; }
+  .flow { grid-template-columns: 1fr 1fr; }
+  .flow li { margin-left: 0; margin-top: -1px; }
+  .flow li:first-child { margin-top: 0; }
+  .flow li:nth-child(2) { margin-top: 0; }
+  .flow li:nth-child(even) { margin-left: -1px; }
+}
+@media (max-width: 480px) {
+  .brand { font-size: 12px; }
+  .links a { padding: 8px 8px; font-size: 11px; }
+  .flow { grid-template-columns: 1fr; }
+  .flow li, .flow li:nth-child(even) { margin-left: 0; margin-top: -1px; }
+  .flow li:first-child { margin-top: 0; }
+  .panel { padding: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .dot, .cursor { animation: none; }
+}
+</style>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">&lt;<b>GCT</b>/&gt;</a>
+    <nav class="links" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#project">Project</a>
+      <a href="#more">Work</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap grid">
+      <div>
+        <div class="status"><span class="dot"></span> OPEN TO OPPORTUNITIES</div>
+        <h1>Veerisetty<br><span>Guru Charan</span> Teja</h1>
+        <p class="role">AI/ML Engineer<span class="cursor"></span></p>
+        <p class="tagline">I build intelligent systems that turn raw data into clear, useful decisions.</p>
+        <div class="cta">
+          <a class="btn solid" href="#project">View Project</a>
+          <a class="btn" href="#contact">Contact Me</a>
+        </div>
+      </div>
+      <div class="panel term" aria-label="Profile summary">
+        <div class="bar"><i></i><i></i><i></i><span>profile.sh</span></div>
+<pre><span class="m">$</span> whoami
+<span class="k">guru_charan_teja</span>
+
+<span class="m">$</span> cat stack.txt
+<span class="k">ml</span>      Python, Random Forest
+<span class="k">web</span>     MERN, JavaScript, .NET
+<span class="k">data</span>    MySQL
+<span class="k">lang</span>    Java, Python
+
+<span class="m">$</span> status
+B.Tech, Uttaranchal University</pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <p class="eyebrow">About</p>
+      <h2>Engineer by training, builder by habit</h2>
+      <div class="about">
+        <div>
+          <p>I am an AI/ML engineer and B.Tech student who enjoys taking a problem from raw data to a working application. My focus is on machine learning models that people can actually use.</p>
+          <p>I work across the stack, from Python models and SQL databases to full web applications in the MERN ecosystem and .NET. That lets me build the model and the product around it.</p>
+          <p>I am looking for opportunities where I can apply machine learning to real problems and keep learning from experienced teams.</p>
+        </div>
+        <dl class="panel facts" style="margin:0">
+          <div><dt>Name</dt><dd>Guru Charan Teja</dd></div>
+          <div><dt>Role</dt><dd>AI/ML Engineer</dd></div>
+          <div><dt>Degree</dt><dd>B.Tech (pursuing)</dd></div>
+          <div><dt>University</dt><dd>Uttaranchal University</dd></div>
+          <div><dt>Location</dt><dd>Dehradun, India</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <p class="eyebrow">Skills</p>
+      <h2>Tech stack</h2>
+      <div class="skill-grid">
+        <div class="panel">
+          <h3><em>01</em>LANGUAGES</h3>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">C# / .NET</span><span class="chip">SQL</span>
+          </div>
+        </div>
+        <div class="panel">
+          <h3><em>02</em>WEB AND DATABASES</h3>
+          <div class="chips">
+            <span class="chip">MongoDB</span><span class="chip">Express.js</span><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">MySQL</span><span class="chip">REST APIs</span><span class="chip">HTML / CSS</span>
+          </div>
+        </div>
+        <div class="panel">
+          <h3><em>03</em>AI/ML AND ENGINEERING</h3>
+          <div class="chips">
+            <span class="chip">Machine Learning</span><span class="chip">Random Forest</span><span class="chip">Data Structures</span><span class="chip">Algorithms</span><span class="chip">OOP</span><span class="chip">Git and GitHub</span><span class="chip">Problem Solving</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="project">
+    <div class="wrap">
+      <p class="eyebrow">Featured project</p>
+      <h2>Flagship build</h2>
+      <article class="panel feature">
+        <span class="badge">ML Application</span>
+        <h3>Insurance Prediction Project</h3>
+        <p class="lead">A machine learning app that predicts a person's health insurance cost from the details they enter. A Random Forest model learns from historical data and returns an estimate instantly.</p>
+
+        <ol class="flow" aria-label="Project pipeline">
+          <li><small>Step 1</small><strong>Input</strong><span>User enters personal and health details</span></li>
+          <li><small>Step 2</small><strong>Prepare</strong><span>Data is cleaned and encoded for the model</span></li>
+          <li class="hot"><small>Step 3</small><strong>Random Forest</strong><span>Ensemble of decision trees makes the prediction</span></li>
+          <li><small>Step 4</small><strong>Output</strong><span>Estimated health insurance amount</span></li>
+        </ol>
+
+        <div class="detail">
+          <div>
+            <h4>What it does</h4>
+            <ul>
+              <li>Takes user inputs through a simple app interface</li>
+              <li>Predicts health insurance cost for that person</li>
+              <li>Uses a Random Forest regression approach</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Built with</h4>
+            <div class="chips">
+              <span class="chip">Python</span><span class="chip">Random Forest</span><span class="chip">Machine Learning</span><span class="chip">ML App</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta">
+          <a class="btn solid" href="https://github.com/charanpandu18/Insurance-Prediction.Ml-App.git" target="_blank" rel="noopener">View on GitHub &#8599;</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="more">
+    <div class="wrap">
+      <p class="eyebrow">More work</p>
+      <h2>Other projects</h2>
+      <div class="cards">
+        <article class="panel">
+          <span class="tag">Full stack</span>
+          <h3>E-commerce Website</h3>
+          <p>An online shopping website where users can browse products and place orders.</p>
+          <a class="btn" href="https://github.com/charanpandu18" target="_blank" rel="noopener">GitHub &#8599;</a>
+        </article>
+        <article class="panel">
+          <span class="tag">Backend</span>
+          <h3>Job Portal Backend</h3>
+          <p>A backend system for a job portal that handles job listings, applicants and data through APIs.</p>
+          <a class="btn" href="https://github.com/charanpandu18" target="_blank" rel="noopener">GitHub &#8599;</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <p class="eyebrow">Education</p>
+      <h2>Background</h2>
+      <div class="timeline">
+        <div class="tl">
+          <h3>Bachelor of Technology (B.Tech)</h3>
+          <span class="meta">Uttaranchal University, Dehradun &middot; Pursuing</span>
+          <p>Engineering degree with a focus on AI and machine learning, software development and databases.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <p class="eyebrow">Contact</p>
+      <h2>Let's build something</h2>
+      <p>Open to internships, projects and conversations about AI and machine learning. Send me an email or find my work on GitHub.</p>
+      <div class="mail">
+        <code id="email">charanpandu1430@gmail.com</code>
+        <button class="btn" id="copy" type="button">Copy email</button>
+      </div>
+      <div class="cta">
+        <a class="btn solid" href="mailto:charanpandu1430@gmail.com">Email me</a>
+        <a class="btn" href="https://github.com/charanpandu18" target="_blank" rel="noopener">GitHub &#8599;</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">&copy; 2026 <b>Veerisetty Guru Charan Teja</b> &middot; AI/ML Engineer</div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById("copy");
+  var email = document.getElementById("email");
+  btn.addEventListener("click", function () {
+    var text = email.textContent;
+    function done() { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy email"; }, 1800); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(email);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = "Press Ctrl+C";
+      setTimeout(function () { btn.textContent = "Copy email"; }, 2200);
+    }
+    try {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+
+</body></html>
